@@ -12,4 +12,3 @@ gunicorn==21.2.0
 datasets==2.16.1
 huggingface_hub==0.20.3
 dill
--e .
