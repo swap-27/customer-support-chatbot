@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample ChatBot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color:#f4f4f9;
+        }
+        .chat-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 800px;
+        }
+        input {
+            width: 80%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 8px 12px;
+            border: none;
+            background: #007bff;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .response-box {
+            margin-top: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+        .sample-questions {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chat-container">
+        <h2>Sample ChatBot</h2>
+        <input id="instruction" placeholder="Ask a question...">
+        <button onclick="askChatBot()">Ask</button>
+        <div class="response-box">
+            <p id="response">Response: </p>
+            <p id="category">Category: </p>
+            <p id="intent">Intent: </p>
+        </div>
+    </div>
+
+    <div class="sample-questions">
+        <p>Try asking:</p>
+        <ul>
+            <li>"Where is my order?"</li>
+            <li>"How do I return an item?"</li>
+            <li>"Cancel my order."</li>
+            <li>"I need help with payment."</li>
+        </ul>
+    </div>
+
+    <script>
+        async function askChatBot() {
+            let instruction = document.getElementById("instruction").value;
+            let responseField = document.getElementById("response");
+            let categoryField = document.getElementById("category");
+            let intentField = document.getElementById("intent");
+
+            responseField.textContent = "Response: Thinking...";
+            categoryField.textContent = "Category: ...";
+            intentField.textContent = "Intent: ...";
+
+            let response = await fetch("/predict", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ instruction: instruction })
+            });
+
+            let result = await response.json();
+            responseField.textContent = "Response: " + (result.response || "Error");
+            categoryField.textContent = "Category: " + (result.category || "Unknown");
+            intentField.textContent = "Intent: " + (result.intent || "Unknown");
+        }
+    </script>
+    <footer style="text-align: center; margin-top: 20px; padding: 10px; background-color: #f8f9fa; border-top: 1px solid #ddd;">
+        <p style="font-size: 20px; font-weight: bold; margin-bottom: 10px;">Created by:</p>
+        <p style="font-size: 16px; font-weight: bold; margin-top: 0;">Swapnil Anand</p>
+        <p>Data Analyst</p>
+        <p><a href="mailto:swapnilanand1998@gmail.com" style="color: #007bff; text-decoration: none;">swapnilanand1998@gmail.com</a></p>
+    </footer>
+
+</body>
+</html>
