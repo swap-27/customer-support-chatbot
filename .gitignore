@@ -173,4 +173,5 @@ cython_debug/
 # Large Files
 /artifacts
 /faiss
+/artifacts/RandomForest_Intent.pkl
 
