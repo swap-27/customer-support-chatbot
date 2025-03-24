@@ -170,8 +170,5 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
-# Large Files
-/artifacts
-/faiss
-/artifacts/RandomForest_Intent.pkl
+
 
