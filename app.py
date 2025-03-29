@@ -3,7 +3,7 @@ from src.components.chatbot import ChatBot
 import os
 
 # Explicitly load the API key
-api_key = os.getenv("HF_API_KEY")
+api_key = os.getenv("API_KEY")
 
 if api_key is None:
     raise ValueError("HF_API_KEY is not set. Please export it before running the app.")

@@ -13,7 +13,7 @@ class ChatBot:
         #self.api_url = "https://api-inference.huggingface.co/models/google/flan-t5-large"
         self.api_url = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.3"
 
-        self.api_key = os.getenv("HF_API_KEY")  # Fetch API Key from env
+        self.api_key = os.getenv("API_KEY")  # Fetch API Key from env
         self.headers = {"Authorization": f"Bearer {self.api_key}"}  # API Key for authentication
         
         self.preprocessor_category_obj_file_path = os.path.join('artifacts', 'vectorizer_category.pkl')
