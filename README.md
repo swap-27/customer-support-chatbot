@@ -1,5 +1,5 @@
 ---
-title: "Tesla Stock Price Predictor"
+title: "AI-powered Customer Support Chatbot"
 emoji: 📈
 colorFrom: blue
 colorTo: green
