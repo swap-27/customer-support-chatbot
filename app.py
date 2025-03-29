@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 # Explicitly load the API key
 api_key = os.getenv("API_KEY")
-print(api_key)
+
 if api_key is None:
     raise ValueError("API_KEY is not set. Please export it before running the app.")
 
