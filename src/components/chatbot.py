@@ -7,12 +7,16 @@ import pickle
 from sentence_transformers import SentenceTransformer
 import numpy as np
 import re
+from dotenv import load_dotenv
+
+
 class ChatBot:
     def __init__(self, instruction: str):
         self.instruction = instruction
         #self.api_url = "https://api-inference.huggingface.co/models/google/flan-t5-large"
         self.api_url = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.3"
 
+        load_dotenv()
         self.api_key = os.getenv("API_KEY")  # Fetch API Key from env
         self.headers = {"Authorization": f"Bearer {self.api_key}"}  # API Key for authentication
         
